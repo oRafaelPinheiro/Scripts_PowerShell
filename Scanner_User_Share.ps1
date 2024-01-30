@@ -14,7 +14,6 @@ if (Get-LocalUser -Name $nomeUsuario -ErrorAction SilentlyContinue) {
     Write-Host "Usuário '$nomeUsuario' criado com sucesso."
 }
 
-
 # Check if the folder exists, if not create it
 $folderPath = "C:\Scanner"
 if (!(Test-Path $folderPath)) {
@@ -44,14 +43,4 @@ if (!(Get-SmbShare | Where-Object { $_.Name -eq $shareName })) {
         Write-Host "O usuário '$username' já possui permissões totais."
     }
 }
-
-
-
-
-# Add an entry to the hosts file
-$hostsPath = "C:\Windows\System32\drivers\etc\hosts"
-$ipAddress = "192.168.10.36"
-$hostname = "SERVER"
-$hostsEntry = "$ipAddress`t$hostname"
-Add-Content -Path $hostsPath -Value $hostsEntry
 
